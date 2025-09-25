@@ -1,0 +1,58 @@
+<div class="relative w-full h-screen flex justify-center items-center overflow-hidden">
+  <video src="/assets/videos/fundo-login.mp4" autoplay muted loop playsinline
+    class="absolute top-0 left-0 w-full h-full object-cover z-0">
+  </video>
+
+  <div
+    class="flex flex-col gap-8 justify-start items-center lg:w-[400px] bg-gray-100 rounded-lg shadow-md p-6 px-8 pb-8 z-10">
+
+    <div class="w-full flex justify-start items-start">
+      <img src="/assets/images/help-desk-logo-nome.png" alt="logo" class="h-[40px]">
+    </div>
+
+    <div class="flex w-full justify-center">
+      <div class="w-40 rounded-md p-3">
+        <h1 class="text-center font-bold text-primary">
+          CADASTRO
+        </h1>
+      </div>
+    </div>
+
+    <form class="flex flex-col w-full gap-3">
+      <mat-form-field appearance="fill" color="primary">
+        <mat-label>Nome *</mat-label>
+        <input matInput type="text" name="nome" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="primary">
+        <mat-label>E-mail *</mat-label>
+        <input matInput type="email" name="email" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="primary">
+        <mat-label>Telefone *</mat-label>
+        <input matInput type="text" name="nome" mask="(00) 0000-0000" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Senha *</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" />
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-pressed]="hide">
+          <mat-icon fontIcon="{{ hide ? 'visibility_off' : 'visibility' }}"></mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Confirmar Senha *</mat-label>
+        <input matInput [type]="confirmHide ? 'password' : 'text'" />
+        <button type="button" mat-icon-button matSuffix (click)="confirmHide = !confirmHide"
+          [attr.aria-pressed]="confirmHide">
+          <mat-icon fontIcon="{{ confirmHide ? 'visibility_off' : 'visibility' }}"></mat-icon>
+        </button>
+      </mat-form-field>
+      <div class="flex flex-row gap-3">
+        <button type="button"
+          class="uppercase w-full rounded-md shadow-lg border border-primary p-3 bg-transparent text-primary font-semibold active:scale-95 hover:bg-gray-200"
+          (click)="navigate('/')">cancelar</button>
+        <button type="submit"
+          class="uppercase w-full rounded-md shadow-lg p-3 bg-primary text-white font-semibold active:scale-95 hover:bg-blue-600">entrar</button>
+      </div>
+    </form>
+  </div>
+</div>

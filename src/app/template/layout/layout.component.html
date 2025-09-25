@@ -1,0 +1,141 @@
+<!-- sidebar -->
+<mat-drawer-container class="w-full h-full" autosize>
+  <mat-drawer #drawer class="h-full" mode="side">
+    <div class="w-full h-full bg-primary text-white p-5 flex flex-col justify-between">
+      <div class="flex flex-row w-full justify-between items-center">
+        @if(drawer.opened) {
+        <img src="/assets/images/help-desk-logo-nome-branco.png" alt="logo" width="140">
+        <button type="button" matButton matTooltip="Reduzir" (click)="drawer.toggle()">
+          <mat-icon fontIcon="radio_button_checked"></mat-icon>
+        </button>
+        }
+      </div>
+      <div class="flex flex-col gap-1 w-full h-[400px]">
+        <button type="button" class="{{ url === 'home'
+          ? 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}"
+          (click)="navigate('home', 'Principal')">
+          <mat-icon fontIcon="home"></mat-icon>
+          Principal
+        </button>
+        <button type="button" class="{{ url === 'solicitacoes'
+          ? 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}"
+          (click)="navigate('solicitacoes', 'Solicitações')">
+          <mat-icon fontIcon="group_add"></mat-icon>
+          Solicitações
+        </button>
+        <button type="button" class="{{ url === 'servicos'
+          ? 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}"
+          (click)="navigate('servicos', 'Serviços')">
+          <mat-icon fontIcon="computer"></mat-icon>
+          Serviços
+        </button>
+      </div>
+      <div class="flex flex-col gap-1 w-full">
+        <hr class="text-white mb-3">
+        <button type="button" (click)="navigate('perfil', 'Perfil')" class="{{ url === 'perfil'
+          ? 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+          <mat-icon fontIcon="person"></mat-icon>
+          Perfil
+        </button>
+        <button type="button" class="{{ url === 'sair'
+          ? 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+          <mat-icon fontIcon="exit_to_app"></mat-icon>
+          Sair
+        </button>
+      </div>
+      <!-- @if (showFiller) {
+      <p>Lorem, ipsum dolor sit amet consectetur.</p>
+      }
+      <button (click)="showFiller = !showFiller" matButton="elevated">
+        Toggle extra text
+      </button> -->
+    </div>
+  </mat-drawer>
+
+  <div class="bg-gray-200 h-full w-full">
+    <div class="flex flex-col lg:flex-row md:flex-row h-full justify-between">
+      @if(!drawer.opened) {
+      <div
+        class="lg:flex md:flex flex-col gap-3 justify-between text-white rounded-r-lg w-[80px] bg-primary h-full p-3 hidden">
+        <button type="button" matButton matTooltip="Expandir" (click)="drawer.toggle()">
+          <img src="/assets/images/help-desk-logo-nome-branco.png" alt="logo" width="60">
+        </button>
+        <div class="flex flex-col gap-1 w-full h-[400px]">
+          <button type="button" (click)="navigate('home', 'Principal')" matTooltip="Principal" class="{{ url === 'home'
+          ? 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+            <mat-icon fontIcon="home"></mat-icon>
+          </button>
+          <button type="button" (click)="navigate('solicitacoes', 'Solicitações')" matTooltip="Solicitações" class="{{ url === 'solicitacoes'
+          ? 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+            <mat-icon fontIcon="group_add"></mat-icon>
+          </button>
+          <button type="button" (click)="navigate('servicos', 'Serviços')" matTooltip="Serviços" class="{{ url === 'servicos'
+          ? 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+            <mat-icon fontIcon="computer"></mat-icon>
+          </button>
+        </div>
+        <div class="flex flex-col justify-center gap-1 w-full">
+          <hr class="text-white mb-3">
+          <button type="button" (click)="navigate('perfil', 'Perfil')" matTooltip="Perfil" class="{{ url === 'perfil'
+          ? 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+            <mat-icon fontIcon="person"></mat-icon>
+          </button>
+          <button type="button" matTooltip="Sair" class="{{ url === 'sair'
+          ? 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+            <mat-icon fontIcon="exit_to_app"></mat-icon>
+          </button>
+        </div>
+      </div>
+      }
+      <div class="flex flex-col gap-5 px-5 pb-5 w-full">
+        <div class="w-full bg-white p-3 rounded-b-lg shadow-md">
+          <h1 class="text-[25px] text-primary font-semibold uppercase">{{ title }}</h1>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+      <!-- sm -->
+      <div
+        class="flex flex-row gap-3 justify-center items-center text-white rounded-t-lg w-full bg-primary h-[80px] p-3 lg:hidden md:hidden">
+        <div class="flex flex-row gap-2">
+          <button type="button" (click)="navigate('home', 'Principal')" matTooltip="Principal" class="{{ url === 'home'
+          ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+            <mat-icon fontIcon="home"></mat-icon>
+          </button>
+          <button type="button" (click)="navigate('solicitacoes', 'Solicitações')" matTooltip="Solicitações" class="{{ url === 'solicitacoes'
+          ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+            <mat-icon fontIcon="group_add"></mat-icon>
+          </button>
+          <button type="button" (click)="navigate('servicos', 'Serviços')" matTooltip="Serviços" class="{{ url === 'servicos'
+          ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+            <mat-icon fontIcon="computer"></mat-icon>
+          </button>
+          <button type="button" (click)="navigate('perfil', 'Perfil')" matTooltip="Perfil" class="{{ url === 'perfil'
+          ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+            <mat-icon fontIcon="person"></mat-icon>
+          </button>
+          <button type="button" matTooltip="Sair" class="{{ url === 'sair'
+          ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+            <mat-icon fontIcon="exit_to_app"></mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</mat-drawer-container>

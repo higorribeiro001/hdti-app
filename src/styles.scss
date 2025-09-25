@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.dev/guide/theming
+
+@use '@angular/material' as mat;
+
+@font-face {
+  font-family: 'Koh Santepheap';
+  src: url('/assets/fonts/Koh_Santepheap/KohSantepheap-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Koh Santepheap';
+  src: url('/assets/fonts/Koh_Santepheap/KohSantepheap-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Koh Santepheap';
+  src: url('/assets/fonts/Koh_Santepheap/KohSantepheap-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Koh Santepheap';
+  src: url('/assets/fonts/Koh_Santepheap/KohSantepheap-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Koh Santepheap';
+  src: url('/assets/fonts/Koh_Santepheap/KohSantepheap-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+html {
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: 'Koh Santepheap',
+    density: 0,
+  ));
+
+  --md-sys-color-primary: #0D375B;
+  --md-sys-color-on-primary: #ffffff;
+
+  --md-sys-color-tertiary: #9F8668;
+  --md-sys-color-on-tertiary: #ffffff;
+
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Koh Santepheap', sans-serif; }

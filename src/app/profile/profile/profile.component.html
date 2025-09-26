@@ -1,0 +1,40 @@
+<div class="flex flex-wrap justify-between gap-2 w-full h-full bg-white px-3 rounded-lg shadow-md animate-fade-up">
+  <div class="w-full lg:w-1/4 flex-col">
+    <div class="flex flex-col gap-2 w-full justify-start py-6 mr-2">
+      <img src="/assets/images/user.jpg" alt="usuario" class="rounded-full w-full">
+      <button
+        class="shadow-md uppercase border border-primary p-3 rounded text-primary text-[18px] bg-transparent hover:bg-gray-200">Trocar
+        foto</button>
+    </div>
+  </div>
+  <form class="flex flex-col justify-between gap-2 w-full lg:w-[73%] py-5 pb-6 items-start">
+    <h2 class="font-semibold text-justify truncate text-[24px] text-primary">Higor Ribeiro Araujo</h2>
+    <div class="w-full">
+      <div class="flex flex-col gap-2">
+        <h3 class="font-semibold">
+          E-mail:
+        </h3>
+        <mat-form-field appearance="fill" color="primary">
+          <mat-label>E-mail</mat-label>
+          <input matInput type="email" name="email" />
+        </mat-form-field>
+      </div>
+      <div class="flex flex-col gap-2">
+        <h3 class="font-semibold">
+          Telefone:
+        </h3>
+        <mat-form-field appearance="fill" color="primary">
+          <mat-label>Telefone</mat-label>
+          <input matInput type="text" name="nome" mask="(00) 0000-0000" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="w-full flex flex-row justify-end">
+      <button type="submit"
+        class="uppercase flex justify-center rounded-md shadow-sm gap-2 text-[18px] p-3 bg-primary text-white font-semibold active:scale-95 hover:bg-blue-600">
+        <mat-icon fontIcon="save"></mat-icon>
+        salvar
+      </button>
+    </div>
+  </form>
+</div>

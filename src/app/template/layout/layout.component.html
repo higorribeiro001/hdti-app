@@ -1,7 +1,7 @@
 <!-- sidebar -->
-<mat-drawer-container class="w-full h-full" autosize>
+<mat-drawer-container class="w-full h-full fixed" autosize>
   <mat-drawer #drawer class="h-full" mode="side">
-    <div class="w-full h-full bg-primary text-white p-5 flex flex-col justify-between">
+    <div class="w-full h-full bg-primary text-gray-200 p-5 flex flex-col justify-between">
       <div class="flex flex-row w-full justify-between items-center">
         @if(drawer.opened) {
         <img src="/assets/images/help-desk-logo-nome-branco.png" alt="logo" width="140">
@@ -10,7 +10,7 @@
         </button>
         }
       </div>
-      <div class="flex flex-col gap-1 w-full h-[400px]">
+      <div class="flex flex-col gap-1 w-full h-[300px]">
         <button type="button" class="{{ url === 'home'
           ? 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
           : 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}"
@@ -41,6 +41,12 @@
           <mat-icon fontIcon="person"></mat-icon>
           Perfil
         </button>
+        <button type="button" (click)="navigate('sobre', 'Sobre')" class="{{ url === 'sobre'
+          ? 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+          <mat-icon fontIcon="info"></mat-icon>
+          Sobre
+        </button>
         <button type="button" class="{{ url === 'sair'
           ? 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
           : 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
@@ -61,7 +67,7 @@
     <div class="flex flex-col lg:flex-row md:flex-row h-full justify-between">
       @if(!drawer.opened) {
       <div
-        class="lg:flex md:flex flex-col gap-3 justify-between text-white rounded-r-lg w-[80px] bg-primary h-full p-3 hidden">
+        class="lg:flex md:flex flex-col fixed gap-3 justify-between text-white rounded-r-lg w-[80px] bg-primary h-full p-3 hidden">
         <button type="button" matButton matTooltip="Expandir" (click)="drawer.toggle()">
           <img src="/assets/images/help-desk-logo-nome-branco.png" alt="logo" width="60">
         </button>
@@ -85,53 +91,69 @@
         <div class="flex flex-col justify-center gap-1 w-full">
           <hr class="text-white mb-3">
           <button type="button" (click)="navigate('perfil', 'Perfil')" matTooltip="Perfil" class="{{ url === 'perfil'
-          ? 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
-          : 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+          ? 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
             <mat-icon fontIcon="person"></mat-icon>
           </button>
+          <button type="button" (click)="navigate('sobre', 'Sobre')" matTooltip="Sobre" class="{{ url === 'sobre'
+          ? 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+            <mat-icon fontIcon="info"></mat-icon>
+          </button>
           <button type="button" matTooltip="Sair" class="{{ url === 'sair'
-          ? 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
-          : 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+          ? 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
             <mat-icon fontIcon="exit_to_app"></mat-icon>
           </button>
         </div>
       </div>
       }
-      <div class="flex flex-col gap-5 px-5 pb-5 w-full">
+      <div
+        class="{{drawer.opened ? 'flex flex-col gap-5 px-5 w-full h-full' : 'flex flex-col gap-5 px-5 lg:pl-[100px] md:pl-[100px] w-full h-full'}}">
         <div class="w-full bg-white p-3 rounded-b-lg shadow-md">
-          <h1 class="text-[25px] text-primary font-semibold uppercase">{{ title }}</h1>
+          <h1 class="text-[25px] text-primary font-semibold uppercase transition-all animate-fade-left">{{ props.title
+            }}</h1>
+          <p class="animate-fade-left">{{ props.subtitle }}</p>
         </div>
         <router-outlet></router-outlet>
+        <div class="pb-6"></div>
       </div>
       <!-- sm -->
-      <div
-        class="flex flex-row gap-3 justify-center items-center text-white rounded-t-lg w-full bg-primary h-[80px] p-3 lg:hidden md:hidden">
-        <div class="flex flex-row gap-2">
-          <button type="button" (click)="navigate('home', 'Principal')" matTooltip="Principal" class="{{ url === 'home'
-          ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
-          : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
-            <mat-icon fontIcon="home"></mat-icon>
-          </button>
-          <button type="button" (click)="navigate('solicitacoes', 'Solicitações')" matTooltip="Solicitações" class="{{ url === 'solicitacoes'
-          ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
-          : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
-            <mat-icon fontIcon="group_add"></mat-icon>
-          </button>
-          <button type="button" (click)="navigate('servicos', 'Serviços')" matTooltip="Serviços" class="{{ url === 'servicos'
-          ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
-          : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
-            <mat-icon fontIcon="computer"></mat-icon>
-          </button>
-          <button type="button" (click)="navigate('perfil', 'Perfil')" matTooltip="Perfil" class="{{ url === 'perfil'
-          ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
-          : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
-            <mat-icon fontIcon="person"></mat-icon>
-          </button>
-          <button type="button" matTooltip="Sair" class="{{ url === 'sair'
-          ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
-          : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
-            <mat-icon fontIcon="exit_to_app"></mat-icon>
-          </button>
+      <div class="lg:hidden md:hidden flex items-end fixed z-40 w-full h-full">
+        <div
+          class="flex flex-row gap-3 justify-center items-center text-white rounded-t-lg w-full bg-primary h-[80px] p-3 lg:hidden md:hidden">
+          <div class="flex flex-row gap-2">
+            <button type="button" (click)="navigate('home', 'Principal')" matTooltip="Principal" class="{{ url === 'home'
+             ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+             : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+              <mat-icon fontIcon="home"></mat-icon>
+            </button>
+            <button type="button" (click)="navigate('solicitacoes', 'Solicitações')" matTooltip="Solicitações" class="{{ url === 'solicitacoes'
+             ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+             : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+              <mat-icon fontIcon="group_add"></mat-icon>
+            </button>
+            <button type="button" (click)="navigate('servicos', 'Serviços')" matTooltip="Serviços" class="{{ url === 'servicos'
+             ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+             : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+              <mat-icon fontIcon="computer"></mat-icon>
+            </button>
+            <button type="button" (click)="navigate('perfil', 'Perfil')" matTooltip="Perfil" class="{{ url === 'perfil'
+             ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+             : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+              <mat-icon fontIcon="person"></mat-icon>
+            </button>
+            <button type="button" (click)="navigate('sobre', 'Sobre')" matTooltip="Sobre" class="{{ url === 'sobre'
+             ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+             : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+              <mat-icon fontIcon="info"></mat-icon>
+            </button>
+            <button type="button" matTooltip="Sair" class="{{ url === 'sair'
+             ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+             : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+              <mat-icon fontIcon="exit_to_app"></mat-icon>
+            </button>
+          </div>
         </div>
       </div>
     </div>

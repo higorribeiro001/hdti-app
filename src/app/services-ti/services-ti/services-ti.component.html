@@ -2,36 +2,36 @@
   <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
     class="mat-elevation-z8" style="background-color: white;">
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
-        No.
+    <!-- Date Column -->
+    <ng-container matColumnDef="data">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por Data">
+        Data
       </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.data}} </td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
-        Name
+    <!-- Hour Column -->
+    <ng-container matColumnDef="hora">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por Hora">
+        Hora
       </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.hora}} </td>
     </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
-        Weight
+    <!-- Request Column -->
+    <ng-container matColumnDef="solicitante">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por Solicitante">
+        Solicitante
       </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.solicitante}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
-        Symbol
+    <!-- Observation Column -->
+    <ng-container matColumnDef="observacao">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por Observação">
+        Observação
       </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.observacao}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -1,0 +1,28 @@
+<div class="flex flex-wrap justify-between gap-2 w-full h-full bg-white px-3 rounded-lg shadow-md animate-fade-up">
+  <form class="flex flex-wrap w-full gap-3 py-3 justify-between">
+    <div class="w-full lg:w-[20%] flex-col">
+      <div class="flex flex-col gap-2 w-full justify-start py-6 mr-2">
+        <img src="/assets/images/upload.jpg" alt="upload" class="rounded-md w-full">
+        <button
+          class="shadow-md uppercase border border-primary p-3 rounded text-primary text-[18px] bg-transparent hover:bg-gray-200">Mandar
+          imagem</button>
+      </div>
+    </div>
+    <div class="flex flex-col gap-3 w-full lg:w-[78%] justify-between py-7">
+      <div class="flex flex-col gap-3">
+        <mat-form-field appearance="fill" color="primary">
+          <mat-label>Titulo *</mat-label>
+          <input matInput type="text" name="nome" />
+        </mat-form-field>
+        <mat-form-field appearance="fill" color="primary">
+          <mat-label>Descrição *</mat-label>
+          <textarea matInput type="text" name="text"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="flex flex-row gap-3 justify-end">
+        <button type="submit"
+          class="uppercase rounded-md shadow-lg p-3 bg-primary text-white font-semibold active:scale-95 hover:bg-blue-600">enviar</button>
+      </div>
+    </div>
+  </form>
+</div>

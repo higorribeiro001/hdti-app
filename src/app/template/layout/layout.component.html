@@ -1,5 +1,5 @@
 <!-- sidebar -->
-<mat-drawer-container class="w-full h-full fixed" autosize>
+<mat-drawer-container class="w-full h-full fixed z-[99]" autosize>
   <mat-drawer #drawer class="h-full" mode="side">
     <div class="w-full h-full bg-primary text-gray-200 p-5 flex flex-col justify-between">
       <div class="flex flex-row w-full justify-between items-center">
@@ -32,6 +32,13 @@
           <mat-icon fontIcon="computer"></mat-icon>
           Serviços
         </button>
+        <button type="button" class="{{ url === 'solicitacao'
+          ? 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-start items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}"
+          (click)="navigate('solicitacao', 'Solicitação')">
+          <mat-icon fontIcon="settings_remote"></mat-icon>
+          Solicitação
+        </button>
       </div>
       <div class="flex flex-col gap-1 w-full">
         <hr class="text-white mb-3">
@@ -63,11 +70,11 @@
     </div>
   </mat-drawer>
 
-  <div class="bg-gray-200 h-full w-full">
+  <div class="bg-gray-200 h-full w-full pb-[80px] lg:pb-0 md:pb-0">
     <div class="flex flex-col lg:flex-row md:flex-row h-full justify-between">
       @if(!drawer.opened) {
       <div
-        class="lg:flex md:flex flex-col fixed gap-3 justify-between text-white rounded-r-lg w-[80px] bg-primary h-full p-3 hidden">
+        class="lg:flex md:flex flex-col fixed gap-3 justify-between text-white rounded-r-lg w-[80px] bg-primary h-full p-3 hidden z-[99]">
         <button type="button" matButton matTooltip="Expandir" (click)="drawer.toggle()">
           <img src="/assets/images/help-desk-logo-nome-branco.png" alt="logo" width="60">
         </button>
@@ -86,6 +93,11 @@
           ? 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
           : 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
             <mat-icon fontIcon="computer"></mat-icon>
+          </button>
+          <button type="button" (click)="navigate('solicitacao', 'Solicitação')" matTooltip="Solicitação" class="{{ url === 'solicitacao'
+          ? 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
+          : 'flex justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
+            <mat-icon fontIcon="settings_remote"></mat-icon>
           </button>
         </div>
         <div class="flex flex-col justify-center gap-1 w-full">
@@ -109,14 +121,14 @@
       </div>
       }
       <div
-        class="{{drawer.opened ? 'flex flex-col gap-5 px-5 w-full h-full' : 'flex flex-col gap-5 px-5 lg:pl-[100px] md:pl-[100px] w-full h-full'}}">
+        class="{{drawer.opened ? 'flex flex-col gap-5 px-5 w-full h-full overflow-y-auto z-50' : 'flex flex-col gap-5 px-5 lg:pl-[100px] md:pl-[100px] w-full h-full overflow-y-auto z-50'}}">
         <div class="w-full bg-white p-3 rounded-b-lg shadow-md">
           <h1 class="text-[25px] text-primary font-semibold uppercase transition-all animate-fade-left">{{ props.title
             }}</h1>
           <p class="animate-fade-left">{{ props.subtitle }}</p>
         </div>
         <router-outlet></router-outlet>
-        <div class="pb-6"></div>
+        <div class="pb-8"></div>
       </div>
       <!-- sm -->
       <div class="lg:hidden md:hidden flex items-end fixed z-40 w-full h-full">
@@ -133,10 +145,10 @@
              : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
               <mat-icon fontIcon="group_add"></mat-icon>
             </button>
-            <button type="button" (click)="navigate('servicos', 'Serviços')" matTooltip="Serviços" class="{{ url === 'servicos'
+            <button type="button" (click)="navigate('solicitacao', 'Solicitação')" matTooltip="Solicitação" class="{{ url === 'solicitacao'
              ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'
              : 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg p-3' }}">
-              <mat-icon fontIcon="computer"></mat-icon>
+              <mat-icon fontIcon="settings_remote"></mat-icon>
             </button>
             <button type="button" (click)="navigate('perfil', 'Perfil')" matTooltip="Perfil" class="{{ url === 'perfil'
              ? 'flex w-[50px] justify-center items-center gap-2 uppercase text-[22px] rounded-lg bg-blue-600 p-3'

@@ -30,6 +30,18 @@ const routes: Routes = [
         loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule),
         pathMatch: 'full',
         data: { title: 'Perfil', subtitle: 'Seu perfil pessoal' }
+      },
+      {
+        path: 'sobre',
+        loadChildren: () => import('../info/info.module').then(m => m.InfoModule),
+        pathMatch: 'full',
+        data: { title: 'Sobre', subtitle: 'Detalhes sobre o HDTI' }
+      },
+      {
+        path: 'solicitacao',
+        loadChildren: () => import('../form-request/form-request.module').then(m => m.FormRequestModule),
+        pathMatch: 'full',
+        data: { title: 'Solicitação', subtitle: 'Faça sua solicitação de serviço para o TI' }
       }
     ]
   },
